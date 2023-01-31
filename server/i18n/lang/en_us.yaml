@@ -1,0 +1,7 @@
+login:
+  suceess: "Login Success"
+  fail: "Login Fail"
+captcha:
+  email:
+    subject: "Register Verification Code"
+    verification_code: "Verification Code"

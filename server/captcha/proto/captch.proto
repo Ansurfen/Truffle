@@ -1,0 +1,19 @@
+syntax="proto3";
+
+package truffle;
+
+option go_package="./;truffle_captcha";
+
+service Captcha {
+    rpc SendEmail (EmailRequest) returns (EmailResponse);
+    
+}
+
+message EmailRequest {
+    string lang = 1;
+    repeated string to = 2;
+}
+
+message EmailResponse {
+    bool ok = 1;
+}

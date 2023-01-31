@@ -1,0 +1,15 @@
+FROM ubuntu:20.04
+
+EXPOSE 8000
+
+COPY main .
+COPY application.yaml .
+
+RUN chmod +x ./main
+RUN mkdir ./log -p
+RUN mkdir ./lang -p
+
+COPY /lang/en_us.yaml /lang
+COPY /lang/zh_cn.yaml /lang
+
+CMD [ "./main" ]

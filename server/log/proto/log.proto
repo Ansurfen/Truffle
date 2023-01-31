@@ -1,0 +1,18 @@
+syntax="proto3";
+
+package truffle;
+
+option go_package="./;truffle_log";
+
+service Log {
+    rpc Logger (LogRequest) returns (LogResponse);
+}
+
+message LogRequest {
+    string level = 1;
+    string msg = 2;
+}
+
+message LogResponse {
+    bool ok = 1;
+}

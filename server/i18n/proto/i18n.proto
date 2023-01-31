@@ -1,0 +1,20 @@
+syntax="proto3";
+
+package truffle;
+
+option go_package="./;truffle_i18n";
+
+service I18N {
+    rpc T (I18NRequest) returns (I18NResponse);
+    // translate stream
+    rpc TS (stream I18NRequest) returns (stream I18NResponse);
+}
+
+message I18NRequest {
+    string lang = 1;
+    string msg = 2;
+}
+
+message I18NResponse {
+    string msg = 1;
+}

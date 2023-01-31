@@ -1,0 +1,15 @@
+package middleware
+
+import (
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+)
+
+func Cors() gin.HandlerFunc {
+	config := cors.DefaultConfig()
+	config.AllowHeaders = append(config.AllowHeaders, "x-token", "Captcha-Id")
+	config.ExposeHeaders = append(config.ExposeHeaders, "Captcha-Id")
+	config.AllowAllOrigins = true
+	return cors.New(config)
+}
+

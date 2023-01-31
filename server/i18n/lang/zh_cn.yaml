@@ -1,0 +1,7 @@
+login:
+  suceess: "注册成功"
+  fail: "注册失败"
+captcha:
+  email:
+    subject: "注册验证码"
+    verification_code: "验证码"

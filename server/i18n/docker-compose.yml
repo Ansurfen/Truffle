@@ -1,0 +1,12 @@
+version: '2'
+services:
+  truffle_i18n:
+    image: ansurfen/truffle_i18n:0.0.2
+    restart: always
+    ports:
+      - 8000-8001:8000
+    networks:
+      - truffle
+networks:
+  truffle:
+    external: true
