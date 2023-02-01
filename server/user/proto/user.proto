@@ -1,0 +1,75 @@
+syntax="proto3";
+
+package truffle;
+
+option go_package="./;truffle_user";
+
+service User {
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc RegAndLogin (RegisterRequest) returns (LoginResponse);
+    rpc Logout (LogoutRequest) returns (LogoutResponse);
+    rpc Cancel (CancelRequset) returns (CancelResponse);
+    rpc Info (InfoRequset) returns (InfoResponse);
+    rpc Edit (EditRequest) returns (EditResponse);
+}
+
+message LoginRequest {
+    string key = 1; // username or email or telephone
+    string password = 2;
+}
+
+message LoginResponse {
+    bool ok = 1;
+    string msg = 2;
+}
+
+message RegisterRequest {
+    string lang = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+}
+
+message RegisterResponse {
+    bool ok = 1;
+    string msg = 2;
+}
+
+message LogoutRequest {
+    string username = 1;
+    string jwt = 2;
+}
+
+message LogoutResponse {
+    bool ok = 1;
+    string msg = 2;
+}
+
+message CancelRequset {
+    string username = 1;
+    string password = 2;
+    string jwt = 3;
+}
+
+message CancelResponse {
+    bool ok = 1;
+    string msg = 2;
+}
+
+message InfoRequset {
+    string username = 1;
+}
+
+message InfoResponse {
+    bool ok = 1;
+    string user = 2;
+}
+
+message EditRequest {
+    string user = 1;
+}
+
+message EditResponse {
+    bool ok = 1;
+}

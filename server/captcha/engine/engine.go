@@ -1,21 +1,21 @@
 package engine
 
 import (
-	"github.com/gin-gonic/gin"
-	. "truffle/breaker"
 	. "truffle/captcha/proto"
 	. "truffle/captcha/server"
 	. "truffle/client"
-	"truffle/etcd"
 	. "truffle/etcd"
 	truffle_i18n "truffle/i18n/proto"
 	truffle_log "truffle/log/proto"
 	"truffle/middleware"
+	. "truffle/middleware"
 	. "truffle/utils"
+
+	"github.com/gin-gonic/gin"
 )
 
 type CaptchaEngine struct {
-	ec      *etcd.ESClient
+	ec      *ESClient
 	gtc     *GTClient
 	httpSrv *gin.Engine
 	gcs     map[string]*GClientConn

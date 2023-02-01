@@ -1,0 +1,291 @@
+basePath: /
+info:
+  contact: {}
+  description: Truffle由好几个部分组成，在网关部分可以访问普罗米修斯
+  title: 这是Truffle微服务的网关
+  version: "1.0"
+paths:
+  /captcha/image/get:
+    get:
+      consumes:
+      - application/json
+      description: 获取图片验证码
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 获取图片验证码
+      tags:
+      - 验证码相关
+  /captcha/image/get/{filename}:
+    get:
+      consumes:
+      - application/json
+      description: 获取历史图片验证码
+      parameters:
+      - description: 图片文件名
+        in: path
+        name: filename
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 获取历史图片验证码
+      tags:
+      - 验证码相关
+  /captcha/image/proof:
+    post:
+      consumes:
+      - application/json
+      description: 校验验证码是否正确
+      parameters:
+      - description: 验证码的ID
+        in: formData
+        name: id
+        required: true
+        type: string
+      - description: 要校验的值
+        in: formData
+        name: val
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"status":"认证通过"}'
+          schema:
+            type: string
+        "500":
+          description: '{"status":"认证失败"}'
+          schema:
+            type: string
+      summary: 图片验证码校验
+      tags:
+      - 验证码相关
+  /channel/get:
+    post:
+      consumes:
+      - application/json
+      description: 获取频道
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 获取频道
+      tags:
+      - 即时通讯相关
+  /channel/group/get:
+    post:
+      consumes:
+      - application/json
+      description: 获取频道组
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 获取频道组
+      tags:
+      - 即时通讯相关
+  /message/get:
+    post:
+      consumes:
+      - application/json
+      description: 获取消息
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 获取消息
+      tags:
+      - 即时通讯相关
+  /message/send:
+    post:
+      consumes:
+      - application/json
+      description: 发送消息
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 发送消息
+      tags:
+      - 即时通讯相关
+  /sys/metrics:
+    get:
+      consumes:
+      - application/json
+      description: 获取Prometheus统计的指标
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 获取指标
+      tags:
+      - 系统相关
+  /sys/swagger/index.html:
+    get:
+      consumes:
+      - application/json
+      description: 获取API文档
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 获取API文档
+      tags:
+      - 系统相关
+  /topic/join:
+    post:
+      consumes:
+      - application/json
+      description: 加入话题
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 加入话题
+      tags:
+      - 即时通讯相关
+  /topic/new:
+    post:
+      consumes:
+      - application/json
+      description: 新增话题
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      summary: 新增话题
+      tags:
+      - 即时通讯相关
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      description: 通过RPC对话验证码服务。判断验证码是否复合要求在决定是否放行，网关不鉴别JWT留给用户服务实现，主要怕别人伪造接口，登录成功会返回ws服务器的地址
+      parameters:
+      - description: 邮箱/手机号/用户名
+        in: formData
+        name: key
+        required: true
+        type: string
+      - description: 登录密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"status":"登录成功"}'
+          schema:
+            type: string
+        "500":
+          description: '{"status":"登录失败"}'
+          schema:
+            type: string
+      summary: 用户登录
+      tags:
+      - 用户相关
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: 注册新用户
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 用户密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      - description: 邮箱
+        in: formData
+        name: key
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"status":"注册成功"}'
+          schema:
+            type: string
+        "500":
+          description: '{"status":"注册失败"}'
+          schema:
+            type: string
+      summary: 用户注册
+      tags:
+      - 用户相关
+swagger: "2.0"

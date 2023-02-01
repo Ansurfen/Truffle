@@ -19,7 +19,7 @@ func GinWrap[Request any](f func(req Request) Result) gin.HandlerFunc {
 		case http.StatusOK:
 			ctx.JSON(http.StatusOK, ret)
 		default:
-
+			ctx.JSON(http.StatusInternalServerError, ret)
 		}
 	}
 }
