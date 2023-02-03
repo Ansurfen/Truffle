@@ -34,7 +34,7 @@ func NewGatewayEngine() *GatewayEngine {
 		httpSrv: gin.Default(),
 		ec:      NewEDClient(opt.Opt(DEFAULT).(DefaultOpt).Service.Etcd.Addr),
 	}
-	InitLoggerAdapter(opt.Opt(DEFAULT).(DefaultOpt).Logger)
+	InitLogger(opt.Opt(DEFAULT).(DefaultOpt).Logger)
 	resolver.Register(engine.ec)
 	return engine
 }

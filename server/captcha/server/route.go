@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"path"
 	"time"
-	"truffle/breaker"
+	"truffle/middleware"
 	"truffle/common"
 	"truffle/utils"
 
@@ -26,7 +26,7 @@ func (router *CaptchaImageRoutes) InitImageApi(group *gin.RouterGroup) {
 	imageRouter := group.Group("/image")
 	imageRouter.Use(sentinelPlugin.SentinelMiddleware())
 	{
-		breaker.LoadRule("GET:/captcha/image/get", 100, uint32(time.Second))
+		middleware.LoadRule("GET:/captcha/image/get", 100, uint32(time.Second))
 		_, b := sentinel.Entry("captcha", sentinel.WithTrafficType(base.Inbound))
 		if b != nil {
 			time.Sleep(time.Duration(rand.Uint64()%10) * time.Millisecond)

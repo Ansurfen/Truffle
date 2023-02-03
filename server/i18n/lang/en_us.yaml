@@ -1,6 +1,16 @@
 login:
-  suceess: "Login Success"
-  fail: "Login Fail"
+  key_pwd_null: "Key or password is null"
+  user_null: "user isn't exist"
+  user_pwd_err: "passwrod err"
+  token_gen_err: "Token release err"
+  token_parse_err: "Token parse err"
+  fail: "Fail Login"
+  success: "Success Login"
+register:
+  key_pwd_null: "Key or pwd is null"
+  email_null: "Email is null"
+  fail: "Fail Register"
+  success: "Success Register"
 captcha:
   email:
     subject: "Register Verification Code"

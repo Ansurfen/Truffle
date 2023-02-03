@@ -20,15 +20,3 @@ func NewConf(name, _type, dir string) *Conf {
 	})
 	return &Conf{conf}
 }
-
-func (c *Conf) GetLogConfigs() LogConfigs {
-	return LogConfigs{
-		Level:       c.GetString("logger.level"),
-		Format:      c.GetString("logger.format"),
-		Path:        c.GetString("logger.path"),
-		FileName:    c.GetString("logger.filename"),
-		FileMaxSize: c.GetInt("logger.maxsize"),
-		Compress:    c.GetBool("logger.compress"),
-		Stdout:      c.GetBool("logger.stdout"),
-	}
-}

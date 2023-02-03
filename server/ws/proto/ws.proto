@@ -1,0 +1,29 @@
+syntax="proto3";
+
+package truffle;
+
+option go_package="./;truffle_ws";
+
+service Ws {
+    rpc WriteMsg (stream WriteMsgRequest) returns (stream WriteMsgResponse);
+    rpc BatchUpdateMsg (BatchUpdateMsgRequest) returns (BatchUpdateMsgResponse);
+}
+
+message WriteMsgRequest {
+    string path = 1;
+    string msg = 2;
+}
+
+message WriteMsgResponse {
+    string path = 1;
+    int32 id = 2;
+}
+
+message BatchUpdateMsgRequest {
+    string path = 1;
+    int32 id = 2; // newest id in the path
+}
+
+message BatchUpdateMsgResponse {
+    bool ok = 1;
+}

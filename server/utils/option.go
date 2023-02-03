@@ -105,33 +105,6 @@ func (opt ServiceOpt) Init(env string, c *Conf) IOpt {
 	return opt
 }
 
-type LoggerOpt struct {
-	Level          string
-	Format         string
-	Path           string
-	FileName       string
-	FileMaxSize    int
-	FileMaxBackups int
-	MaxAge         int
-	Compress       bool
-	Stdout         bool
-}
-
-func (opt LoggerOpt) Scheme() string {
-	return LOGGER
-}
-
-func (opt LoggerOpt) Init(env string, c *Conf) IOpt {
-	opt.Level = c.GetString("logger.level")
-	opt.Format = c.GetString("logger.format")
-	opt.Path = c.GetString("logger.path")
-	opt.FileName = c.GetString("logger.filename")
-	opt.FileMaxSize = c.GetInt("logger.maxsize")
-	opt.Compress = c.GetBool("logger.compress")
-	opt.Stdout = c.GetBool("logger.stdout")
-	return opt
-}
-
 type EnvOpt struct {
 	Env       string
 	UseMQ     bool

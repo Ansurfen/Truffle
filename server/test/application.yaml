@@ -1,0 +1,75 @@
+breaker:
+    logger:
+        path: ./log
+db:
+    charset: utf8
+    database: truffle
+    driver: mysql
+    host: localhost
+    password: root
+    port: 3306
+    username: root
+email:
+    auth:
+        host: smtp.qq.com
+        id: ""
+        password: xxx
+        username: xxx@qq.com
+    from: Truffle <xxx@qq.com>
+    server: smtp.qq.com:25
+env:
+    break: true
+    mq: true
+    this: develop
+    tracer: true
+etcd:
+    develop:
+        addr:
+            - 127.0.0.1:2379
+    release:
+        addr:
+            - 127.0.0.2:2479
+    time:
+        dial: 30
+        expire: 30
+kafka:
+    develop:
+        addr:
+            - 127.0.0.1:9092
+    dial: false
+    release:
+        addr:
+            - 198.0.0.1:9092
+langs:
+    - en_us
+    - zh_cn
+logger:
+    compress: false
+    filename: test.log
+    format: json
+    level: debug
+    maxsize: 1
+    path: ./log
+    stdout: true
+redis:
+    host: 127.0.0.1
+    password: ""
+    port: 6379
+server:
+    base: 9050
+    develop:
+        host: 127.0.0.1
+    http: 9095
+    limit: 2
+    name: truffle
+    port: 9050
+    release:
+        host: 198.0.0.1
+timer:
+    bits: 100
+    factor: 0.5
+    hash_func: 4
+tracer:
+    develop:
+        addr: http://localhost:9411/api/v2/spans
+        name: ""

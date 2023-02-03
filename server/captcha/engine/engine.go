@@ -33,7 +33,7 @@ func NewCaptchaEngine() *CaptchaEngine {
 		ec:      NewESClient(opt.Opt(DEFAULT).(DefaultOpt).Service.Etcd.Addr),
 		httpSrv: gin.Default(),
 	}
-	InitLoggerAdapter(opt.Opt(DEFAULT).(DefaultOpt).Logger)
+	InitLogger(opt.Opt(DEFAULT).(DefaultOpt).Logger)
 	return engine
 }
 

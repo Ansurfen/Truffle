@@ -11,7 +11,7 @@ import (
 
 func TestInitLogger(t *testing.T) {
 	// 1. 配置log参数
-	conf := utils.LogConfigs{
+	conf := utils.LoggerOpt{
 		Level:          "debug",    // 输出日志级别 "debug" "info" "warn" "error"
 		Format:         "logfmt",   // 输出日志格式 logfmt, json
 		Path:           "./log",    // 输出日志文件位置

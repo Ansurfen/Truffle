@@ -11,7 +11,7 @@ import (
 )
 
 type LogEngine struct {
-	gtc *GTClient
+	gtc *GTClient // !现在都带追踪到时候要接口类才能自由开关
 	ec  *ESClient
 	mq  *MQProducer
 }
@@ -22,7 +22,7 @@ func NewLogEngine() *LogEngine {
 		gtc: NewGTClient(opt),
 		ec:  NewESClient(opt.Opt(DEFAULT).(DefaultOpt).Service.Etcd.Addr),
 	}
-	InitLoggerAdapter(opt.Opt(DEFAULT).(DefaultOpt).Logger)
+	InitLogger(opt.Opt(DEFAULT).(DefaultOpt).Logger)
 	return engine
 }
 

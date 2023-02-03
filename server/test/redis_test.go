@@ -12,7 +12,7 @@ import (
 
 func init() {
 	opt := LoadOpt(ENV_DEVELOP, DefaultOpt{}, db.NoSQLOpt{}, LoggerOpt{})
-	InitLoggerAdapter(opt.Opt(LOGGER).(LoggerOpt))
+	InitLogger(opt.Opt(LOGGER).(LoggerOpt))
 	db.InitRedis(opt.Opt(db.NOSQL).(db.NoSQLOpt))
 	db.GetRedis().Ping()
 }

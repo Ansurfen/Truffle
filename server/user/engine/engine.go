@@ -27,7 +27,7 @@ func NewUserEngine() *UserEngine {
 		gtc: NewGTClient(opt),
 		ec:  NewEUClient(opt.Opt(DEFAULT).(DefaultOpt).Service.Etcd.Addr),
 	}
-	InitLoggerAdapter(opt.Opt(DEFAULT).(DefaultOpt).Logger)
+	InitLogger(opt.Opt(DEFAULT).(DefaultOpt).Logger)
 	resolver.Register(engine.ec)
 	return engine
 }

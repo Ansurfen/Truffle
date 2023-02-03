@@ -20,7 +20,7 @@ func NewI18NEngine() *I18NEngine {
 		gtc: NewGTClient(opt),
 		ec:  NewESClient(opt.Opt(DEFAULT).(DefaultOpt).Service.Etcd.Addr),
 	}
-	InitLoggerAdapter(opt.Opt(DEFAULT).(DefaultOpt).Logger)
+	InitLogger(opt.Opt(DEFAULT).(DefaultOpt).Logger)
 	Lopt = opt.Opt(LANG).(LangOpt)
 	return engine
 }
