@@ -13,7 +13,7 @@ sub scan_file {
             # } elsif ($_ =~ /yaml$|yml$/) {
             #   print "$_\n";
             # }
-            if ($_ =~ /.xx$/) {
+            if ($_ =~ /.go$/) {
                 # print "$_\n";
                 replace($_);
             }

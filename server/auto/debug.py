@@ -90,6 +90,7 @@ def runService(opt: Opt) -> None:
             res['server']['base'] = res['server']['port'] = opt.rpcPort
             res['server']['http'] = opt.httpPort
             res['server']['name'] = opt.name
+            res['tracer']['develop']['name'] = opt.name
             with open("." + opt.dir + '/application.yaml', 'w+', encoding='utf-8') as target:
                 target.seek(0)
                 target.truncate()
@@ -118,7 +119,7 @@ todoList: dict = {
         "opt": MiddlewareOpt(OptType.MQ)
     },
     "user": {
-        "enable": False,
+        "enable": True,
         "opt": ServiceOpt('user', 8000, 8005, "/user", ['kafka', 'langs', 'timer', 'email', 'breaker'])
     },
     "captcha": {
@@ -126,24 +127,24 @@ todoList: dict = {
         "opt": ServiceOpt('captcha', 8010, 8015, "/captcha", ['db', 'kafka', 'redis', 'tracer', 'langs'])
     },
     "gateway": {
-        "enable": False,
-        "opt": ServiceOpt('gateway', 8020, 8025, "/gateway", ['etcd', 'db', 'redis', 'kafka', 'tracer', 'langs', 'timer', 'email', 'breaker'])
+        "enable": True,
+        "opt": ServiceOpt('gateway', 8020, 8025, "/gateway", ['db', 'redis', 'kafka', 'tracer', 'langs', 'timer', 'email', 'breaker'])
     },
     "log": {
-        "enable": False,
+        "enable": True,
         "opt": ServiceOpt('log', 8030, 8035, "/log", ['breaker', 'db', 'timer', 'redis', 'email', 'langs'])
     },
     "i18n": {
-        "enable": False,
-        "opt": ServiceOpt('i18n', 8040, 8045, "/i18n", ['breaker', 'db', 'email', 'kafka', 'redis', 'timer', 'langs'])
-    },
-    "topic": {
-        "enable": False,
-        "opt": ServiceOpt('topic', 8060, 8065, "/topic", ['kafka', 'email', 'timer', 'breaker', 'langs'])
+        "enable": True,
+        "opt": ServiceOpt('i18n', 8040, 8045, "/i18n", ['breaker', 'db', 'email', 'kafka', 'redis', 'timer'])
     },
     "ws": {
         "enable": False,
-        "opt": ServiceOpt('ws', 8070, 8075, "/ws", ['email', 'timer', 'breaker', 'langs'])
+        "opt": ServiceOpt('ws', 8060, 8065, "/ws", ['email', 'timer', 'breaker', 'langs'])
+    },
+    "ws_consumer": {
+        "enable": False,
+        "opt": ServiceOpt('ws_consumer', 8070, 8075, "/ws_consumer", ['email', 'timer', 'breaker', 'langs'])
     },
 }
 
