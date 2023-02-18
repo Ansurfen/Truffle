@@ -1,0 +1,18 @@
+services:
+  - host: 192.168.142.129
+    port: 22
+    ftp:
+      - FROM: "./deploy.yaml"
+        TO: "/home/ubuntu/deploy.yaml"
+        HOOK:
+          - "touch /home/ubuntu/deploy.yaml;"
+  - host: 192.168.142.130
+    port: 22
+    ftp:
+      - FROM: "./enter.sh"
+        TO: "/home/ubuntu/enter.sh"
+        HOOK:
+          - "touch /home/ubuntu/enter.sh"
+
+global:
+  cmd: ["sudo chmode -R 777 /home/ubuntu"]
