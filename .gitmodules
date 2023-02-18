@@ -1,0 +1,3 @@
+[submodule "plugins/tfqa"]
+	path = plugins/tfqa
+	url = https://github.com/Ansurfen/tfqa.git
